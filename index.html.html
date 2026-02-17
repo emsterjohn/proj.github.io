@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Anniversary 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+overflow:hidden;
+background:linear-gradient(to right,#fff,#ffc0cb);
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:opacity .5s ease, transform .5s ease;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:translateY(20px);
+}
+
+.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:#ff69b4;
+color:white;
+font-size:16px;
+margin:8px;
+}
+button:active{background:#ff1493;}
+
+h1,h2{text-align:center;color:#ff1493}
+
+.pass-box{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,105,180,.3);
+width:90%;
+max-width:350px;
+text-align:center;
+}
+
+.dots{display:flex;justify-content:center;margin:15px 0;}
+
+.dot{
+width:14px;
+height:14px;
+border-radius:50%;
+margin:5px;
+border:2px solid #ff69b4;
+}
+
+.filled{background:#ff69b4;}
+
+.keypad{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.key{
+background:#ffb6c1;
+border-radius:50%;
+padding:15px;
+font-size:18px;
+}
+
+.letterBox{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,105,180,.4);
+max-width:400px;
+text-align:center;
+}
+
+.profile-container{
+width:330px;
+height:330px;
+overflow:hidden;
+border-radius:20px;
+border:6px solid #ff69b4;
+box-shadow:0 0 35px #ffb6c1;
+margin-bottom:20px;
+position:relative;
+}
+
+.profile-container img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+position:absolute;
+top:0;
+left:0;
+transition:opacity 1s ease-in-out;
+opacity:0;
+}
+
+.profile-container img.active{
+opacity:1;
+}
+
+audio{
+width:90%;
+max-width:350px;
+margin:15px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loginPage" class="page visible">
+<div class="pass-box">
+<h2>ENTER PASSWORD💕</h2>
+<div class="dots">
+<div class="dot"></div><div class="dot"></div><div class="dot"></div>
+<div class="dot"></div><div class="dot"></div><div class="dot"></div>
+</div>
+
+<div class="keypad">
+<button class="key" onclick="addNum('1')">1</button>
+<button class="key" onclick="addNum('2')">2</button>
+<button class="key" onclick="addNum('3')">3</button>
+<button class="key" onclick="addNum('4')">4</button>
+<button class="key" onclick="addNum('5')">5</button>
+<button class="key" onclick="addNum('6')">6</button>
+<button class="key" onclick="addNum('7')">7</button>
+<button class="key" onclick="addNum('8')">8</button>
+<button class="key" onclick="addNum('9')">9</button>
+<button class="key" onclick="clearCode()">←</button>
+<button class="key" onclick="addNum('0')">0</button>
+<button class="key" onclick="submitCode()">✔</button>
+</div>
+</div>
+</div>
+
+<div id="menuPage" class="page hidden">
+<h1>HAPPY ANNIVERSARY LABS❤️</h1>
+<button onclick="goLove()">💌 Love Letter</button>
+<button onclick="goMusic()">🎵 Music</button>
+</div>
+
+<div id="lovePage" class="page hidden">
+<div class="letterBox">
+<h2>HAPPY 3RD ANNIVERSARY💖</h2>
+<p>
+HAPPY 3RD ANNIVERSARY labs...3 years dn ta? dasig2 lng ba HAHAHAHA ano pgd nga
+ mga new experience mahimo ta by?HAHAHA..sorry labs d mn ko kmaan mag express 
+ gamit words pero gusto ko lng hmbalon knimo nga thankyou gd sa tanan2 kay nag 
+ stay kaw gyapon bisan amo lng ko kdja HAHAHA thankyou sa mga support mo knakon
+and thankyou for loving me💖... Sorry kung kisa may time nga hindi kita mag inchindihanay kag
+kisa kung gaaway kita nabawalan mo ko mag bike mng awah HAHAHA kg sorry mn kung d ko kmaan mag 
+himo ka letter nga english...Gsto ko lng mamanan mo nga ja lng ko purmi kung may problema
+kaw may kailangan ja lng ko para knimo ah... happy 3rd aniversary labs ILOVEYOU😙💕.
+</p>
+<button onclick="goMenu()">⬅ Back</button>
+</div>
+</div>
+
+<div id="musicPage" class="page hidden">
+
+<h2>When I Met You 💕</h2>
+
+<div class="profile-container" id="profileContainer">
+<img src="images/pic1.jpg" class="active">
+<img src="images/pic2.jpg">
+<img src="images/pic3.jpg">
+<img src="images/pic4.jpg">
+<img src="images/pic5.jpg">
+<img src="images/pic6.jpg">
+<img src="images/pic7.jpg">
+<img src="images/pic8.jpg">
+<img src="images/pic9.jpg">
+<img src="images/pic10.jpg">
+<img src="images/pic11.jpg">
+<img src="images/pic12.jpg">
+<img src="images/13.jpg">
+<img src="images/14.jpg">
+<img src="images/15.jpg">
+<img src="images/16.jpg">
+<img src="images/17.jpg">
+<img src="images/18.jpg">
+<img src="images/19.jpg">
+<img src="images/20.jpg">
+
+
+</div>
+
+<audio id="audio" src="audio/whenimetyou.mp3"></audio>
+
+<div>
+<button onclick="playMusic()">▶ Play</button>
+<button onclick="pauseMusic()">⏸ Pause</button>
+</div>
+
+<button onclick="goMenuFromMusic()">⬅ Back</button>
+
+</div>
+
+<script>
+let code="";
+let correctPassword="021823";
+
+function addNum(n){
+if(code.length<6){code+=n;updateDots();}
+}
+function clearCode(){
+code=code.slice(0,-1);
+updateDots();
+}
+function updateDots(){
+let dots=document.querySelectorAll(".dot");
+dots.forEach((d,i)=>d.classList.toggle("filled",i<code.length));
+}
+function submitCode(){
+if(code===correctPassword){
+switchPage("loginPage","menuPage");
+}else{
+alert("Wrong Code");
+code="";
+updateDots();
+}
+}
+
+function switchPage(hide,show){
+document.getElementById(hide).classList.remove("visible");
+document.getElementById(hide).classList.add("hidden");
+setTimeout(()=>{
+document.getElementById(show).classList.remove("hidden");
+document.getElementById(show).classList.add("visible");
+},500);
+}
+
+function goLove(){switchPage("menuPage","lovePage");}
+function goMusic(){switchPage("menuPage","musicPage");}
+function goMenu(){switchPage("lovePage","menuPage");}
+function goMenuFromMusic(){
+pauseMusic();
+switchPage("musicPage","menuPage");
+}
+
+let audio=document.getElementById("audio");
+let images=document.querySelectorAll("#profileContainer img");
+let current=0;
+let slideshowInterval=null;
+
+function showNextImage(){
+images[current].classList.remove("active");
+current=(current+1)%images.length;
+images[current].classList.add("active");
+}
+
+function startSlideshow(){
+if(!slideshowInterval){
+slideshowInterval=setInterval(showNextImage,3000);
+}
+}
+
+function stopSlideshow(){
+clearInterval(slideshowInterval);
+slideshowInterval=null;
+}
+
+function playMusic(){
+audio.play();
+startSlideshow();
+}
+
+function pauseMusic(){
+audio.pause();
+stopSlideshow();
+}
+
+audio.addEventListener("ended",stopSlideshow);
+</script>
+
+</body>
+</html>
